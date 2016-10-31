@@ -32,6 +32,4 @@ EXPOSE 80
 
 RUN systemctl enable httpd
 
-VOLUME ["/var/www/page/public"]
-
 CMD ["/usr/sbin/init"]
