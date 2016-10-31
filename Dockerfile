@@ -1,4 +1,4 @@
-FROM docker pull kokspflanze/centos-systemd:latest
+FROM kokspflanze/centos-systemd:latest
 
 MAINTAINER "KoKsPflaNzE" <kokspflanze@protonmail.com>
 
