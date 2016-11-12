@@ -17,7 +17,10 @@ RUN yum -y install epel-release iproute at curl crontabs
 # pagespeed
 RUN curl -O https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_current_x86_64.rpm \
  && rpm -U mod-pagespeed-*.rpm \
- && yum clean all # cleanup
+ && yum clean all \
+ && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+ && php composer-setup.php --install-dir=bin --filename=composer \
+ && php -r "unlink('composer-setup.php');"
 
 # we want some config changes
 COPY config/php_settings.ini /etc/php.d/
