@@ -2,6 +2,8 @@ FROM kokspflanze/centos-systemd:latest
 
 MAINTAINER "KoKsPfLaNzE" <kokspflanze@protonmail.com>
 
+ENV container docker
+
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
  && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
@@ -20,7 +22,9 @@ RUN curl -O https://dl-ssl.google.com/dl/linux/direct/mod-pagespeed-stable_curre
  && yum clean all \
  && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
  && php composer-setup.php --install-dir=bin --filename=composer \
- && php -r "unlink('composer-setup.php');"
+ && php -r "unlink('composer-setup.php');" \
+ && rm -rf /etc/localtime \
+ && ln -s /usr/share/zoneinfo/Europe/Berlin /etc/localtime
 
 # we want some config changes
 COPY config/php_settings.ini /etc/php.d/
