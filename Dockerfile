@@ -1,4 +1,4 @@
-FROM kokspflanze/centos-systemd:latest
+FROM centos:latest
 
 MAINTAINER "KoKsPfLaNzE" <kokspflanze@protonmail.com>
 
